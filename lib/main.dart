@@ -32,6 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
   bool visibilityStart = false;
   bool visibilityLogin = true;
 
+  //로그인 프레임과 스타트 프레임 변경 로직
   void _changed(bool visibility, String field) {
     setState(() {
       if (field == "start") {
@@ -104,6 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           //스타트 버튼 화면
                           visibilityStart ? new Container(
                             decoration: BoxDecoration(
+                              //그라이언트 적용하려 했으나 디자인적 미스로 제거
                               gradient: LinearGradient( begin: Alignment.centerLeft, end: Alignment.centerRight, colors: [Color(0xff1b0225), Color(0xff1b0225)],),
                               borderRadius: BorderRadius.all(Radius.circular(15),),
                               boxShadow:[
@@ -126,15 +128,14 @@ class _MyHomePageState extends State<MyHomePage> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15.0), //모서리
                               ), //테두리
-                              minWidth: 300.0, // 가로크기는 최소 100.0 픽셀
-                              height: 100.0,    // 세로크기는 60.0 픽셀
+                              minWidth: 300.0,
+                              height: 100.0,
                               child: MaterialButton(
                                   //enabled : true,
                                   onPressed: (){
                                     _changed(false, "start");
                                     _changed(true,  "login");
                                   },
-                                  //color : const Color(0xff1b0225),
                                   child: Text(
                                     'Start',
                                     style: TextStyle(
@@ -153,7 +154,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                 child: new Container(
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10), //모서리를 둥글게
-                                      //border: Border.all(color: Colors.white, width: 3),
                                       color: Colors.white,
                                   ), //테두리
                                   width: 100,
@@ -176,7 +176,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   color: Colors.grey[400],
                                   icon: const Icon(Icons.cancel, size: 22.0,),
                                   onPressed: () {
-                                    _changed(false, "login");
+                                    //텍스트 필드 초기화 처리 로직 구현 필요
                                   },
                                 ),
                               ),
@@ -190,7 +190,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                 child: new Container(
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10), //모서리를 둥글게
-                                    //border: Border.all(color: Colors.white, width: 3),
                                     color: Colors.white,
                                   ), //테두리
                                   width: 100,
@@ -199,6 +198,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   child: new TextField(
                                     obscureText: true,
                                     maxLength: 10,
+                                    //데이터 받아오기 및 비밀번호 숨김처리
                                     onChanged: (text) { print(text); },
                                     onSubmitted: (text) { print('Submitted:$text'); },
                                     maxLines: 1,
@@ -217,7 +217,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   color: Colors.grey[400],
                                   icon: const Icon(Icons.cancel, size: 22.0,),
                                   onPressed: () {
-                                    _changed(false, "패스워드");
+                                    //텍스트필드 초기화 로직 구현
                                   },
                                 ),
                               ),
